@@ -1,0 +1,22 @@
+{
+    "name": "stagiaire/pdf",
+    "description": "Utilisation de bibliothèques pdf",
+    "type": "project",
+    "license": "MIT",
+    
+    "authors": [
+        {
+            "name": "Anaïs Elgueta",
+            "email": "anais.elgueta@yahoo.fr"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "app\\":"src/"
+        }
+    },
+    "require": {
+        "spipu/html2pdf": "^5.2",
+        "dompdf/dompdf": "^0.8.5"
+    }
+}

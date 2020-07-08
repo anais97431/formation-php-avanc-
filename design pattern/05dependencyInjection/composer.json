@@ -1,0 +1,16 @@
+{
+    "name": "stagiaire/05dependency-injection",
+    "authors": [
+        {
+            "name": "Anaïs Elgueta",
+            "email": "anais.elgueta@yahoo.fr"
+        }
+    ],
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "app\\": "."
+        }
+    }
+}
