@@ -1,0 +1,23 @@
+But /Objectif :
+
+-Valider par un système de contrôle que l'application fonctionne (absence de bug)
+
+Catégorisation des tests : 
+- rapide et peu coûteux : tests unitaires
+- - souvent (logiquement) : 1 unité = 1 classe
+- - quoi tester ?
+  - ne pas tester le code simple / trivial
+  - tester ce qui est soumis à interprétation de l'équipe de développement
+  - tester les bugs qui sont arrivés => non-régression
+
+- lent et couteux : tests de bout en bout (e2e : end to end)
+- - nécessite de programmer une navigation graphique sur un navigateur
+- - passe par un outil de programmation de scénario Selenium 
+    qui se branche via WebDriver sur le navigateur
+
+
+Quand tester ?
+-> les rapides, un peu tout le temps
+-> les complets à la livraison (ou l'intégration si process existant)
+
+

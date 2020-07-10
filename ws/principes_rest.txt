@@ -1,0 +1,85 @@
+REST = Representational State Transfert
+
+
+1. toute information relative à l'état est visible au sein du dialogue HTTP
+=> à requête identique, réponse identique.
+
+
+2. Respect strict du protocole HTTP
+
+2.1 Les requêtes entête principale VERB(le protocole+le nom domaine) + path(derrière le domaine) + querystring(après un point d'intérogation) + hashbang  
+(VERB/path?querystring#hashbang)
+
+HEAD => identique a GET mais sans le contenu
+GET => obtenir une ressource
+POST => publier une resource(ajouter/créer/demarrer une session)
+PUT => positionner, substituer, remplacer une ressource
+DELETE => supprimer
+PATCH => modifier partiellement une ressource
+OPTIONS => demander les conditions d'acces et options d'une ressource (quels sont les conditions pour que je puisse poser la question)
+TRACE => tracer les machines intermédiaires entre le client et le serveur
+
+
+plutôt que:
+GET/article/creer.php
+GET/article/supprimer.php
+
+préférer:
+POST/article
+DELETE/article/1234
+
+Pour de l'usage interne on peut créer des VERB 
+RECEIPT/estimate/1234 (création de nouveau verbe)
+
+2.2 les réponses en en-tête principale STATUSCODE + STATUSTEXT
+
+réponse de classe 1 : 
+1xx info
+
+réponse de classe 2 :
+2xx success => réponse a succés de l'utilisateur
+
+200 OK
+201 CREATED
+
+
+STATUS de type 300 sont des redirection :
+3xx redirection
+301 MOVED
+302 FOUND
+303 SEE OTHER
+304 NOT MODIFIED
+
+STATUS de type 400 sont des erreurs de navigation :
+4xx erreur du client(!=utilisateur)
+400 BAD REQUEST
+401 UNAUTHORIZED (non authorisé mais on laisse la personne s'authentifier pour montrer qu'elle peut accéder)
+403 FORBIDDEN (interdit)
+
+Problème dans l'entête principale de la requete :
+404 NOT FOUND
+405 METHOD NOT ALLOWED
+
+5xx erreur serveur
+500 INTERNAL SERVER ERROR
+502 BAD GATEWAY
+
+Aller plus loin :
+
+HATEOAS :
+- permet de découvrir le service (cf wsdl)
+- fonctionne comme les pages web -> liens hyper-médias
+
+ex :
+ma_banque.php
+{
+    "account": 1234,
+    "links": {
+        "deposit": "http://ma_banque.fr/account/deposit"
+    }
+}
+
+GraphQL : 
+
+- principe similaire aux requêtes SQL appliqué aux requêtes HTTP
+- requête formalisée via une structure JSON

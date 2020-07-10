@@ -1,0 +1,9 @@
+{
+    "/desk": {
+        "GET": "app\\DeskManager::findAllNumbers"
+    },
+    "/desk/(?P<number>[0-9]+)": {
+        "GET": "app\\DeskManager::findOnByNumbers"
+    }
+}
+
