@@ -1,0 +1,47 @@
+formulaire de commentaire
+
+XSS : Cross Site Scripting
+
+saisie utilisateur:
+
+
+Bonjour, j'aime <strong>beaucoup</strong>.
+
+->htmlspecialchars()
+Bonjour, j'aime &lt;strong&gt;beaucoup&lt;/strong&gt;.
+
+
+Injection SQL :
+
+Bonjour, j'aime beaucoup. " ; DROP TABLE user;
+
+$sql = 'INSERT INTO comment(body) VALUES ("'.$form['body'].'")';
+
+formulaire de login :
+
+mot de passe = toto OR 1;
+
+$sql = 'SELECT* FROM user WHERE password = "'.$form['password'].'"';
+
+=> PDO => requête préparée
+
+
+CSRF Cross Site Request Forgery
+
+<img src="http//mabanque.fr/virement.php?destinataire=pierre&montant=1000"/>
+
+=> règle n1 = jamais de changement d'état sur une requête GET
+
+<form method="POST" action="http//mabanque.fr/virement.php">
+<input type="hidden" name="destinataire" value="pierre"/>
+<input type="hidden" name="montant" value="1000"/>
+<button>télécharger gratuitement photoshop</button>
+</form>
+<script>
+document.onload = function(){
+    document.forms[0].submit();
+}
+</script>
+
+=> ajout d'un jeton "synchronizer"
+=> côté navigateur gérer le CORS (Cross Origin Ressource Sharing) / SOP (Same Origin Policy)
